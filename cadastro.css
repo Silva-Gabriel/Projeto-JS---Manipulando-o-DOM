@@ -18,17 +18,17 @@ label{
     text-shadow: 1.5px 1.5px 1.5px #0f0f0f; 
 }
 
-#EOpen,#EClose{
+#EOpen,#EClose,#EOpenConfirm,#ECloseConfirm{
     color:rgba(0,0,0,.80);
     left: 85%;
     font-size:18px;
 }
 
-#EOpen{
+#EOpen,#EOpenConfirm{
     display: none;
 }
 
-#EOpen:hover,#EClose:hover{
+#EOpen:hover,#EClose:hover,#EOpenConfirm:hover,#ECloseConfirm:hover{
     cursor: pointer;
     color:royalblue;
     transition: 0.5s;
@@ -39,9 +39,9 @@ form{
     border-radius: 10px;
     background:whitesmoke;
     box-shadow: 14px 14px 16px black;
-    max-width:32rem;
+    max-width:33rem;
     width:80%;
-    max-height: 36rem;
+    max-height: 39rem;
     height: 100%;
     padding:1.8rem;
     /*Centraliza o formulário*/
@@ -52,7 +52,7 @@ form{
 }
 
 form h1{
-    margin-top:1rem;
+    margin-top:0.7rem;
     margin-bottom:1rem;
     font-family: impact,arial,Times;
     font-size: 40px;
@@ -97,7 +97,7 @@ form input[type=password]:focus{
     outline: 0;
 }
 
-.aviso{
+.aviso,#confirmP{
     margin-bottom: -0.8rem;
     color:red;
     font-size:12px;
@@ -106,9 +106,8 @@ form input[type=password]:focus{
 #senhaForte{
     display: flex;
 }
+
 #senhaForte .aviso{
     margin-right:0.8rem;
-} 
-.aviso{
     margin-top:0.3rem;
-}
+} 
