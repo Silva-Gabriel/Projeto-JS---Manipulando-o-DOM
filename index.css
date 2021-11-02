@@ -7,7 +7,7 @@
 body{
     display: flex;
     font-family: 'Times New Roman', Times, serif;
-    background-image: url('IMG/space.png');
+    background-image: url('space.png');
     background-size: cover;
 
 }
