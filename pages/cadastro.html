@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <link rel="shortcut icon" type="imagex/png" href="/IMG/cadastro.png">
+    <script src="https://kit.fontawesome.com/ec194e965a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+</head>
+<body>
+    <form>
+        <h1>Cadastre-se</h1>
+
+        <p class="aviso" id="minName">* Insira no mínimo 4 caractéres</p>
+        <label for="name"><i class="fas fa-signature"></i></label>
+        <input id="nome" type="text" name='nome' placeholder="Nome">
+
+        <p class="aviso" id="minUser">* Insira no mínimo 4 caractéres</p>
+        <label for="name"><i class="fas fa-user"></i></label>
+        <input id="usuario" type="text" name='usuario' placeholder="Usuário">
+
+
+        <p class="aviso" id="validFormatNumber">* (xx) 9xxxx-xxxx</p>
+        <label for="name"><i class="fas fa-phone-square-alt"></i></label>
+        <input id="celular" type="text" name='celular' placeholder="Celular">
+
+        <p class="aviso" id="validFormatEmail">* username@dominio.com</p>
+        <label for="name"><i class="fas fa-envelope"></i></label>
+        <input id="email" type="text" name='email' placeholder="E-mail">
+    
+        <!--Campo senha-->
+        <div id='senhaForte'>
+            <p class="aviso" id="letraM">* Letra maiúscula</p>
+            <p class="aviso" id="letram">* Letra minúscula</p>
+            <p class="aviso" id="simbolo">* Símbolo</p>
+            <p class="aviso" id="numero">* Número</p>
+        </div>
+        <label for="name"><i class="fas fa-key"></i></label>
+        <label id="EOpen" for="name"><i class="fas fa-eye" aria-hidden='true'></i></label>
+        <label id="EClose" for="name"><i class="fas fa-eye-slash" aria-hidden='true'></i></label>
+        <input id="key" type="password" name='senha' placeholder="Senha">
+
+        <!--Botão-->
+        <input type="submit" value="Cadastrar" id="cadastrar">
+    </form>
+    <script>
+        var open = document.getElementById('EOpen');
+        var close = document.getElementById('EClose');
+        var key = document.getElementById('key');
+
+        var nome = document.getElementById('nome');
+        var usuario = document.getElementById('usuario');
+        var celular = document.getElementById('celular');
+        var email = document.getElementById('email');
+
+        function mostrarSenha(abrir,fechar,chave)
+        {
+
+            close.addEventListener('click',() =>{
+                if(key.getAttribute('type') == 'password')
+                {
+                    key.setAttribute('type','text');
+                    open.style.display = 'inline';
+                    close.style.display = 'none';
+                }
+                else{
+                    key.setAttribute('type','password');
+                    close.style.display = 'inline';
+                    open.style.display = 'none';
+                }
+            })
+        }
+
+        function ocultarSenha(abrir,fechar,chave)
+        {
+            open.addEventListener('click',() =>{
+                if(key.getAttribute('type') == 'password')
+                {
+                    key.setAttribute('type','text');
+                    open.style.display = 'inline';
+                    close.style.display = 'none';
+                }
+                else{
+                    key.setAttribute('type','password');
+                    close.style.display = 'inline';
+                    open.style.display = 'none';
+                }
+            })
+        }
+
+        function borderInputCadastro()
+        {
+            nome.addEventListener('focus',() => {
+                nome.style.borderColor = 'royalblue'
+            });
+            
+            nome.addEventListener('blur',() => {
+                nome.style.borderColor = '#ccc';
+            });
+
+            usuario.addEventListener('focus',() => {
+                usuario.style.borderColor = 'royalblue'
+            });
+            
+            usuario.addEventListener('blur',() => {
+                usuario.style.borderColor = '#ccc';
+            });
+
+            celular.addEventListener('focus',() => {
+                celular.style.borderColor = 'royalblue'
+            });
+            
+            celular.addEventListener('blur',() => {
+               celular.style.borderColor = '#ccc';
+            });
+
+            email.addEventListener('focus',() => {
+                email.style.borderColor = 'royalblue'
+            });
+            
+            email.addEventListener('blur',() => {
+                email.style.borderColor = '#ccc';
+            });
+
+            key.addEventListener('focus',() => {
+                key.style.borderColor = 'royalblue'
+            });
+            
+            key.addEventListener('blur',() => {
+                key.style.borderColor = '#ccc';
+            });
+        }
+
+        nome.addEventListener('keyup', () => {
+            let p = document.getElementById('minName');
+            if(nome.value.length >= 4)
+                p.style.color = 'green';
+            else
+                p.style.color = 'red';
+        })
+
+        usuario.addEventListener('keyup',() =>{
+            let p = document.getElementById('minUser');
+            if(usuario.value.length >= 4)
+                p.style.color = 'green';
+
+            else
+                p.style.color = 'red';
+        })
+
+        /*celular.addEventListener()*/
+
+        /*email.addEventListener()*/
+
+        /*key.addEventListener()*/
+
+        function validarCampos()
+        {
+            if(nome.style.color == 'green' &&
+            usuario.style.color == 'green' &&
+            celular.style.color == 'green' &&
+            email.style.color == 'green' &&
+            key.style.color == 'green')
+                return true;
+            else
+                return false;
+        }
+
+        var cadastrar = document.querySelector('input[type=submit]');
+        cadastrar.addEventListener('click',() => {
+            if(validarCampos() == true)
+                alert('Cadastrado com sucesso');
+            else{
+                alert('Preencha todos os campos corretamente!');
+            }
+        });
+
+        mostrarSenha(open,close,key);
+        ocultarSenha(open,close,key);
+        borderInputCadastro();
+    </script>
+</body>
+</html>
