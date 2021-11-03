@@ -170,6 +170,12 @@ var email = document.getElementById('email');
             let letraMinuscula = document.getElementById('letram');
             let simbolo = document.getElementById('simbolo');
             let numero = document.getElementById('numero');
+            let minChar = document.getElementById('minChar');
+
+            if(senha.value.length >= 8)
+                minChar.style.color = '#04CB32';
+            else
+                minChar.style.color = 'red';
 
             if(senha.value.match(/[A-Z]+/))
                 letraMaiuscula.style.color = '#04CB32';
@@ -233,7 +239,8 @@ var email = document.getElementById('email');
             !allField[5].style.color == '#04CB32',
             !allField[6].style.color == '#04CB32',
             !allField[7].style.color == '#04CB32',
-            !allField[8].style.color == '#04CB32'
+            !allField[8].style.color == '#04CB32',
+            !allField[9].style.color == '#04CB32'
             )
                 return false;
             else{
