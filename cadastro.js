@@ -245,6 +245,7 @@ var email = document.getElementById('email');
         cadastrar.addEventListener('click',() => {
             if(validarCampos())
             {
+                limparCampos();
                 alert('Cadastro realizado com sucesso!');
                 window.location.href = 'index.html';
             }
@@ -252,6 +253,16 @@ var email = document.getElementById('email');
                 alert('Preencha todos os campos corretamente!');
             }
         });
+
+        function limparCampos()
+        {
+            nome.value = '';
+            usuario.value = '';
+            celular.value = '';
+            email.value = '';
+            senha.value = '';
+            senhaConfirm = '';
+        }
 
         borderInputCadastro();
         changeIconEyeConfirmSenha();
