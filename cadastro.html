@@ -26,7 +26,7 @@
         <input id="usuario" type="text" name='usuario' placeholder="Usuário">
 
         <!-- Campo celular -->
-        <p class="aviso" id="validFormatNumber">* (xx) 9xxxx-xxxx</p>
+        <p class="aviso" id="validFormatNumber">* Somente números</p>
         <label for="name"><i class="fas fa-phone-square-alt"></i></label>
         <input id="celular" type="text" name='celular' placeholder="Celular">
 
@@ -49,7 +49,7 @@
 
         <!-- Campo confirma senha -->
         <div id="confirm">
-            <p id="confirmP">* Os campos conferem</p>
+            <p id="confirmP" class="aviso">* Os campos conferem</p>
         </div>
         <label for="name"><i class="fas fa-key"></i></label>
         <label id="EOpenConfirm" for="name"><i class="fas fa-eye" aria-hidden='true'></i></label>
@@ -57,183 +57,8 @@
         <input id="senhaConfirm" type="password" name='senhaConfirm' placeholder="Confirme a senha" onclick="mostrarSenha(senhaConfirm,openConfirmSenha,closeConfirmSenha)">
 
         <!--Botão entrar-->
-        <input type="submit" value="Cadastrar" id="cadastrar">
+        <input type="button" value="Cadastrar" id="cadastrar">
     </form>
-    <!-- Script para declaração de variáveis globais -->
-    <script>
-        // Declaração escopo senha e senhaConfirm
-        var openSenha = document.getElementById('EOpen');
-        var closeSenha = document.getElementById('EClose');
-        var senha = document.getElementById('senha');
-        var openConfirmSenha = document.getElementById('EOpenConfirm');
-        var closeConfirmSenha = document.getElementById('ECloseConfirm');
-        var senhaConfirm = document.getElementById('senhaConfirm');
-
-        // Declaração escopo input-form
-        var nome = document.getElementById('nome');
-        var usuario = document.getElementById('usuario');
-        var celular = document.getElementById('celular');
-        var email = document.getElementById('email');
-    </script>
-
-    <script>
-
-        
-        // Mostra ou oculta a senha com base no tipo de atributo
-        function mostrarSenha(chave,olhoAberto,olhoFechado)
-        {
-            olhoFechado.addEventListener('click',() =>{
-                if(chave.getAttribute('type') == 'password')
-                    chave.setAttribute('type','text');
-            })
-
-            olhoAberto.addEventListener('click',() => {
-                if(chave.getAttribute('type') == 'text')
-                    chave.setAttribute('type','password');
-            })
-        }
-
-        function changeIconEyeSenha()
-        {
-            // Ao clicar no botão para mostrar senha ele oculta o atual e mostra o próximo,no caso o ocultar senha
-            openSenha.addEventListener('click',() => {
-                openSenha.style.display = 'none';
-                closeSenha.style.display = 'inline';
-            })
-
-            // Evento anterior,mas ao contrário
-            closeSenha.addEventListener('click',() =>{
-                closeSenha.style.display = 'none';
-                openSenha.style.display = 'inline';
-            })
-        }
-
-        function changeIconEyeConfirmSenha()
-        {
-            openConfirmSenha.addEventListener('click',() => {
-            openConfirmSenha.style.display = 'none';
-            closeConfirmSenha.style.display = 'inline';
-            })
-
-            // Evento anterior,mas ao contrário
-            closeConfirmSenha.addEventListener('click',() =>{
-                closeConfirmSenha.style.display = 'none';
-                openConfirmSenha.style.display = 'inline';
-            })
-        }
-
-        // Coloca borda ao focar e tira ao desfocar
-        function borderInputCadastro()
-        {
-            nome.addEventListener('focus',() => {
-                nome.style.borderColor = 'royalblue'
-            });
-            
-            nome.addEventListener('blur',() => {
-                nome.style.borderColor = '#ccc';
-            });
-
-            usuario.addEventListener('focus',() => {
-                usuario.style.borderColor = 'royalblue'
-            });
-            
-            usuario.addEventListener('blur',() => {
-                usuario.style.borderColor = '#ccc';
-            });
-
-            celular.addEventListener('focus',() => {
-                celular.style.borderColor = 'royalblue'
-            });
-            
-            celular.addEventListener('blur',() => {
-               celular.style.borderColor = '#ccc';
-            });
-
-            email.addEventListener('focus',() => {
-                email.style.borderColor = 'royalblue'
-            });
-            
-            email.addEventListener('blur',() => {
-                email.style.borderColor = '#ccc';
-            });
-
-            senha.addEventListener('focus',() => {
-                senha.style.borderColor = 'royalblue'
-            });
-            
-            senha.addEventListener('blur',() => {
-                senha.style.borderColor = '#ccc';
-            });
-
-            senhaConfirm.addEventListener('focus',() => {
-                senhaConfirm.style.borderColor = 'royalblue'
-            });
-            
-            senhaConfirm.addEventListener('blur',() => {
-                senhaConfirm.style.borderColor = '#ccc';
-            });
-        }
-
-        nome.addEventListener('keyup', () => {
-            let p = document.getElementById('minName');
-            if(nome.value.length >= 4)
-                p.style.color = 'green';
-            else
-                p.style.color = 'red';
-        })
-
-        usuario.addEventListener('keyup',() =>{
-            let p = document.getElementById('minUser');
-            if(usuario.value.length >= 4)
-                p.style.color = 'green';
-
-            else
-                p.style.color = 'red';
-        })
-
-        /*celular.addEventListener()*/
-
-        /*email.addEventListener()*/
-
-        /*senha.addEventListener()*/
-
-        senhaConfirm.addEventListener('keyup',function validarSenha() {
-            let p = document.getElementById('confirmP');
-            if(senha.value == senhaConfirm.value){
-                p.style.color = 'green';
-            }
-            else{
-                p.style.color = 'red';
-            }
-        })
-
-        function validarCampos()
-        {
-            if
-            (nome.style.color == 'green' &&
-            usuario.style.color == 'green' &&
-            celular.style.color == 'green' &&
-            email.style.color == 'green' &&
-            senha.style.color == 'green' &&
-            senhaConfirm.style.color == 'green'
-            )
-                return true;
-            else
-                return false;
-        }
-
-        var cadastrar = document.querySelector('input[type=submit]');
-        cadastrar.addEventListener('click',() => {
-            if(validarCampos() == true)
-                alert('Cadastrado com sucesso');
-            else{
-                alert('Preencha todos os campos corretamente!');
-            }
-        });
-
-        borderInputCadastro();
-        changeIconEyeConfirmSenha();
-        changeIconEyeSenha();
-    </script>
+    <script src="cadastro.js"></script>
 </body>
 </html>
