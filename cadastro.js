@@ -108,19 +108,27 @@ var email = document.getElementById('email');
                 senhaConfirm.style.borderColor = '#ccc';
             });
         }
+        
+        var meSalvaAi;
 
         nome.addEventListener('keyup', () => {
             let p = document.getElementById('minName');
             if(nome.value.length >= 4)
+            {
                 p.style.color = '#04CB32';
+                return true;
+            }
             else
                 p.style.color = 'red';
+                return false;
         })
 
         usuario.addEventListener('keyup',() =>{
             let p = document.getElementById('minUser');
             if(usuario.value.length >= 4)
+            {
                 p.style.color = '#04CB32';
+            }
             else
                 p.style.color = 'red';
         })
@@ -132,11 +140,15 @@ var email = document.getElementById('email');
 
         celular.addEventListener('keyup', () => {
             let p = document.getElementById('validFormatNumber');
-            let numPhone = document.getElementById('celular');
+
             if(validarCelular(celular.value))
+            {
                 p.style.color = '#04CB32';
+                return true;
+            }
             else{
                 p.style.color = 'red';
+                return false;
             }
         })
         
@@ -158,14 +170,17 @@ var email = document.getElementById('email');
         email.addEventListener('keyup',() => {
             let p = document.getElementById('validFormatEmail');
             if(validarEmail())
+            {
                 p.style.color = '#04CB32';
+                return true;
+            }
             else   
                 p.style.color = 'red';
+                return false;
         })
 
         /*senha.addEventListener()*/
-
-        senha.addEventListener('keyup',function validarForca(){
+        senha.addEventListener('keyup',() => {
             let letraMaiuscula = document.getElementById('letraM');
             let letraMinuscula = document.getElementById('letram');
             let simbolo = document.getElementById('simbolo');
@@ -173,29 +188,56 @@ var email = document.getElementById('email');
             let minChar = document.getElementById('minChar');
 
             if(senha.value.length >= 8)
+            {
                 minChar.style.color = '#04CB32';
-            else
+            }  
+            else{
                 minChar.style.color = 'red';
+            }
 
             if(senha.value.match(/[A-Z]+/))
+            {
                 letraMaiuscula.style.color = '#04CB32';
-            else
+            } 
+            else{
                 letraMaiuscula.style.color = 'red';
+            }
                 
             if(senha.value.match(/[a-z]/))
+            {
                 letraMinuscula.style.color = '#04CB32';
-            else
+            }
+            else{
                 letraMinuscula.style.color = 'red';
+            }
 
             if(senha.value.match(/[@#$%&;*?+-./=]/))
+            {
                 simbolo.style.color = '#04CB32';
-            else
+            }
+            else{
                 simbolo.style.color = 'red';
+            }
 
             if(senha.value.match(/[0-9]/))
+            {
                 numero.style.color = '#04CB32';
-            else
+            }
+            else{
                 numero.style.color = 'red';
+            }
+
+            if(senha.value.length >= 8 &&
+            senha.value.match(/[A-Z]/) &&
+            senha.value.match(/[a-z]/) && 
+            senha.value.match(/[@#$%&;*?+-./=]/) &&
+            senha.value.match(/[0-9]/)
+            )
+            {
+                meSalvaAi = true;
+            }else{
+                meSalvaAi = false;
+            }
         })
 
         function validarSenha()
@@ -227,37 +269,33 @@ var email = document.getElementById('email');
             })
         }
 
-        var allField = document.querySelectorAll('.aviso');
-        function validarCampos()
-        {
-            if(
-            !allField[0].style.color == '#04CB32',
-            !allField[1].style.color == '#04CB32',
-            !allField[2].style.color == '#04CB32',
-            !allField[3].style.color == '#04CB32',
-            !allField[4].style.color == '#04CB32',
-            !allField[5].style.color == '#04CB32',
-            !allField[6].style.color == '#04CB32',
-            !allField[7].style.color == '#04CB32',
-            !allField[8].style.color == '#04CB32',
-            !allField[9].style.color == '#04CB32'
-            )
-                return false;
-            else{
-                return true;
-            }
-        }
-
-        var cadastrar = document.getElementById('cadastrar');
+        let cadastrar = document.getElementById('cadastrar');
         cadastrar.addEventListener('click',() => {
-            if(validarCampos())
+            let msgSucess = document.getElementById('msgSucess');
+            let msgError = document.getElementById('msgError');
+            let form = document.querySelector('form');
+            if(nome.value.length >= 4 &&
+                usuario.value.length >= 4 &&
+                validarCelular(celular.value) &&
+                validarEmail(email.value) &&
+                meSalvaAi == true &&
+                senha.value == senhaConfirm.value
+                )
             {
                 limparCampos();
-                alert('Cadastro realizado com sucesso!');
-                window.location.href = 'index.html';
+                msgSucess.style.display = 'block';
+                msgError.style.display = 'none';
+                msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso</strong>';
+                form.style.maxHeight = '39rem';
+                alert('Sucess');
+                // window.location.href = 'index.html';
             }
             else{
-                alert('Preencha todos os campos corretamente!');
+                msgError.style.display = 'block';
+                msgSucess.style.display = 'none';
+                msgError.innerHTML = '<strong>Por favor,preencha todos os campos corretamente!</strong>';
+                form.style.maxHeight = '39rem';
+                alert('Erro');
             }
         });
 
@@ -268,9 +306,18 @@ var email = document.getElementById('email');
             celular.value = '';
             email.value = '';
             senha.value = '';
-            senhaConfirm = '';
+            senhaConfirm.value = '';
+
+            nome.style.color = 'red';
+            usuario.style.color = 'red';
+            celular.style.color = 'red';
+            email.style.color = 'red';
+            senha.style.color = 'red';
+            senhaConfirm.style.color = 'red';
+
         }
 
+        
         borderInputCadastro();
         changeIconEyeConfirmSenha();
         changeIconEyeSenha();
