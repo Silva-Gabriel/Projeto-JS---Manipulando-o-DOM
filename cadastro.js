@@ -282,20 +282,17 @@ var meSalvaAi;
                 senha.value == senhaConfirm.value
                 )
             {
-                limparCampos();
                 msgSucess.style.display = 'block';
                 msgError.style.display = 'none';
                 msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso</strong>';
                 form.style.maxHeight = '39rem';
-                alert('Sucess');
-                // window.location.href = 'index.html';
+                limparCampos();
             }
             else{
                 msgError.style.display = 'block';
                 msgSucess.style.display = 'none';
                 msgError.innerHTML = '<strong>Por favor,preencha todos os campos corretamente!</strong>';
                 form.style.maxHeight = '39rem';
-                alert('Erro');
             }
         });
 
