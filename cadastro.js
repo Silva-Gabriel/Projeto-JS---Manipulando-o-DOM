@@ -299,6 +299,13 @@ var email = document.getElementById('email');
             }
         });
 
+        function go_telaLogin(){
+            let logar = document.getElementById('logar');
+            logar.addEventListener('click',()=>{
+                location.href = 'index.html';
+            })
+        }
+
         function limparCampos()
         {
             nome.value = '';
@@ -317,8 +324,9 @@ var email = document.getElementById('email');
 
         }
 
-        
+        //Chamada dos métodos
         borderInputCadastro();
         changeIconEyeConfirmSenha();
         changeIconEyeSenha();
         validarSenha();
+        go_telaLogin();
