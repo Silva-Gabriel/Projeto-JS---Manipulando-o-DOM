@@ -12,8 +12,9 @@ var usuario = document.getElementById('usuario');
 var celular = document.getElementById('celular');
 var email = document.getElementById('email');
 
+//Uma variável especial que me ajudou no momento mais difícil :)
+var meSalvaAi;
 
- 
         // Mostra ou oculta a senha com base no tipo de atributo
         function mostrarSenha(chave,olhoAberto,olhoFechado)
         {
@@ -108,8 +109,6 @@ var email = document.getElementById('email');
                 senhaConfirm.style.borderColor = '#ccc';
             });
         }
-        
-        var meSalvaAi;
 
         nome.addEventListener('keyup', () => {
             let p = document.getElementById('minName');
@@ -153,6 +152,7 @@ var email = document.getElementById('email');
         })
         
         function validarEmail(){
+
             if(
             email.value=='' ||
             email.value.indexOf('@') == -1 ||
@@ -308,6 +308,17 @@ var email = document.getElementById('email');
 
         function limparCampos()
         {
+            let minName = document.getElementById('minName');
+            let minUser = document.getElementById('minUser');
+            let validFormatNumber = document.getElementById('validFormatNumber');
+            let validFormatEmail = document.getElementById('validFormatEmail');
+            let letraMaiuscula = document.getElementById('letraM');
+            let letraMinuscula = document.getElementById('letram');
+            let simbolo = document.getElementById('simbolo');
+            let numero = document.getElementById('numero');
+            let minChar = document.getElementById('minChar');
+            let confirmP = document.getElementById('confirmP');
+
             nome.value = '';
             usuario.value = '';
             celular.value = '';
@@ -315,12 +326,16 @@ var email = document.getElementById('email');
             senha.value = '';
             senhaConfirm.value = '';
 
-            nome.style.color = 'red';
-            usuario.style.color = 'red';
-            celular.style.color = 'red';
-            email.style.color = 'red';
-            senha.style.color = 'red';
-            senhaConfirm.style.color = 'red';
+            minName.style.color = 'red';
+            minUser.style.color = 'red';
+            validFormatNumber.style.color = 'red';
+            validFormatEmail.style.color = 'red';
+            letraMaiuscula.style.color = 'red';
+            letraMinuscula.style.color = 'red';
+            simbolo.style.color = 'red';
+            numero.style.color = 'red';
+            minChar.style.color = 'red';
+            confirmP.style.color = 'red';
 
         }
 
