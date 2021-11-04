@@ -287,6 +287,7 @@ var meSalvaAi;
                 msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso</strong>';
                 form.style.maxHeight = '39rem';
                 limparCampos();
+                alterarStatus();
             }
             else{
                 msgError.style.display = 'block';
@@ -305,6 +306,17 @@ var meSalvaAi;
 
         function limparCampos()
         {
+
+            nome.value = '';
+            usuario.value = '';
+            celular.value = '';
+            email.value = '';
+            senha.value = '';
+            senhaConfirm.value = '';
+        }
+
+        function alterarStatus()
+        {
             let minName = document.getElementById('minName');
             let minUser = document.getElementById('minUser');
             let validFormatNumber = document.getElementById('validFormatNumber');
@@ -316,13 +328,6 @@ var meSalvaAi;
             let minChar = document.getElementById('minChar');
             let confirmP = document.getElementById('confirmP');
 
-            nome.value = '';
-            usuario.value = '';
-            celular.value = '';
-            email.value = '';
-            senha.value = '';
-            senhaConfirm.value = '';
-
             minName.style.color = 'red';
             minUser.style.color = 'red';
             validFormatNumber.style.color = 'red';
@@ -333,7 +338,6 @@ var meSalvaAi;
             numero.style.color = 'red';
             minChar.style.color = 'red';
             confirmP.style.color = 'red';
-
         }
 
         //Chamada dos métodos
