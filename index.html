@@ -8,18 +8,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ec194e965a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
     <title>Form Login</title>
 </head>
 <body>
     <form>
-        <h1>Entre com sua conta</h1>
+        <h1>LOGIN</h1>
+        <!-- Mensagem na tentativa de autenticar -->
+        <div id='msgLogar'>
+            <div id='msgSucess'></div>
+            <div class="spinner-border text-success loading" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+        </div>
+            <div id='msgError'></div>
+        
         <label for="name"><i class="fas fa-envelope"></i></label>
-        <input id="email" type="text" name="email" placeholder="Email">
+        <input id="usuario" type="text" name="usuario" placeholder="Usuário">
         <label for="name"><i class="fas fa-key"></i></label>
         <label id="eye" for="name"><i class="fas fa-eye" aria-hidden='true'></i></label>
         <label id="eyeSlash" for="name"><i class="fas fa-eye-slash" aria-hidden='true'></i></label>
         <input id="senha" type="password" name='senha' placeholder="Senha">
-        <input type="submit" name="action" value="Entrar">
+        <input id="entrar" type="button" name="acao" value="Entrar">
         <div class="divCadastro">
             <p>Não tem conta? </p>
             <a id="cadastroA" href="cadastro.html">Cadastre-se</a>

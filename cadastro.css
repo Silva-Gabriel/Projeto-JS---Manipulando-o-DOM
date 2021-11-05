@@ -92,7 +92,7 @@ form h1{
     display:none;
     max-width:300px;
     width:100%;
-    padding:0.5rem;
+    padding:0.6rem;
     border-radius: 6px;
     background:lightgreen;
     color:green;
@@ -103,8 +103,9 @@ form h1{
 
 #msgError{
     display:none;
-    width:80%;
-    padding:10px;
+    max-width: 300px;
+    width:100%;
+    padding:0.6rem;
     border-radius: 6px;
     background:rgb(255, 197, 197);
     color:red;
@@ -118,7 +119,7 @@ form input[type=password]{
     font-size:16px;
     width:100%;
     height: 2.3rem;
-    border: 0.5px solid #ccc;
+    border: 1px solid #ccc;
     padding-left:3rem;
     margin-bottom:0.2rem;
 }
