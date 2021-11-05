@@ -282,12 +282,37 @@ var meSalvaAi;
                 senha.value == senhaConfirm.value
                 )
             {
+                //Iniciando validação no localStorage
+                let listaUsuarios = JSON.parse(localStorage.getItem('listaUsuarios') || '[]');
+                listaUsuarios.push(
+                {
+                    Nome: nome.value,
+                    Usuario: usuario.value,
+                    Celular: celular.value,
+                    Email: email.value,
+                    Senha: senha.value
+                })
+
+                localStorage.setItem('listaUsuarios',JSON.stringify(listaUsuarios));
+
                 msgSucess.style.display = 'block';
                 msgError.style.display = 'none';
                 msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso</strong>';
                 form.style.maxHeight = '39rem';
                 limparCampos();
                 alterarStatus();
+                setInterval(()=>{
+                    msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso.</strong>';
+                },800);
+                setInterval(()=>{
+                    msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso..</strong>';
+                },1600);
+                setInterval(()=>{
+                    msgSucess.innerHTML = '<strong>Cadastro realizado com sucesso...</strong>';
+                },2400);
+                setTimeout(() =>{
+                    location.href = 'index.html';
+                },3000)
             }
             else{
                 msgError.style.display = 'block';
